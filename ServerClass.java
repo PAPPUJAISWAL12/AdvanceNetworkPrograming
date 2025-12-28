@@ -1,5 +1,7 @@
-package AdvanceNetwork;
+
 import java.io.OutputStream;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -14,6 +16,9 @@ public class ServerClass{
             OutputStream output=socket.getOutputStream();
             PrintWriter writer=new PrintWriter(output,true);
             writer.println("Hello Hemnarayan");
+            BufferedReader reader=new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            String clientMessage=reader.readLine();
+            System.out.println("Message from client: "+clientMessage);
             writer.close();
             socket.close();
             Ssocket.close();
