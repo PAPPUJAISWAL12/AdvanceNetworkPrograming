@@ -17,11 +17,25 @@ public class ServerClass{
             PrintWriter writer=new PrintWriter(output,true);
             writer.println("Hello Hemnarayan");
             BufferedReader reader=new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            String clientMessage=reader.readLine();
-            System.out.println("Message from client: "+clientMessage);
-            writer.close();
-            socket.close();
-            Ssocket.close();
+            BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+            String clientMessage="",serverMsg="";
+            while(true){
+                
+                clientMessage=reader.readLine();
+                if(clientMessage==null || clientMessage.equalsIgnoreCase("exit")){
+                    System.out.println("Client disconnected");
+                    break;
+                }
+                System.out.println("Message from client: "+clientMessage);
+                System.out.println("server msg : ");
+                serverMsg=br.readLine();
+                writer.println(serverMsg);
+
+            
+            }           
+            
+        
+           
         }
         catch(Exception ex){
             ex.printStackTrace();

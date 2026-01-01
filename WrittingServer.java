@@ -8,8 +8,10 @@ public class WrittingServer {
             PrintWriter pr=new PrintWriter(os,true);
            
             BufferedReader br=new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
              pr.println("Hello from WrittingServer");
             String response=br.readLine();
+
             System.out.println("Response from server: "+response);
             br.close();
             pr.close();
