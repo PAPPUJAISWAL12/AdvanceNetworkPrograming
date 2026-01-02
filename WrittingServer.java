@@ -10,9 +10,18 @@ public class WrittingServer {
             BufferedReader br=new BufferedReader(new InputStreamReader(socket.getInputStream()));
             BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
              pr.println("Hello from WrittingServer");
-            String response=br.readLine();
-
-            System.out.println("Response from server: "+response);
+            String ServerMsg,cmsg;
+            while (true) {
+                ServerMsg=br.readLine();
+                if(ServerMsg==null || ServerMsg.equalsIgnoreCase("exit")){
+                    System.out.println("Server disconnected");
+                    break;
+                }
+                System.out.println("Message from server: "+ServerMsg);
+                System.out.println("Client message: ");
+                cmsg=reader.readLine();
+                pr.println(cmsg);
+            }
             br.close();
             pr.close();
             socket.close();
